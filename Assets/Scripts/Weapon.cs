@@ -1,0 +1,19 @@
+using UnityEngine;
+
+public class Weapon : MonoBehaviour
+{
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    public float fireRate = 0.1f;
+
+    float nextFire;
+
+    void Update()
+    {
+        if (Input.GetMouseButton(0) && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        }
+    }
+}
